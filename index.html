@@ -168,15 +168,16 @@
   </section>
 
   <section class="scrine2 hide">
-    <header class="avatar center">
-      <img src="img/avatar.svg" alt="ава">
-    </header>
-    <div class="chat center">
+    <header class="chat">
+      <img class="avatar" src="img/avatar.svg" alt="ава">
       <span class="chatText center">Привет! Меня зовут Антон и я разработчик. <br> <b>А ты?</b></span>
-    </div>
-    <footer class="center btns">
-      <button type="button" class="btn hr">HR</button>
-      <button type="button" class="btn customer">Customer</button>
+    </header>
+    <footer class="center">
+      <span>Привет, я </span>
+      <div class="btns">
+        <button class="btn hr">HR</button>
+        <button class="btn customer">Customer</button>
+      </div>
     </footer>
   </section>
 
@@ -200,36 +201,41 @@
     }
     //scrine2
     let chat = document.querySelector('.chatText'),
-        bottom1 = document.querySelectorAll('.scrine2 button')[0];
-        bottom2 = document.querySelectorAll('.scrine2 button')[1];
+      bottom1 = document.querySelectorAll('.scrine2 button')[0],
+      bottom2 = document.querySelectorAll('.scrine2 button')[1],
+      btns = document.querySelector('.btns'),
+      userTextChat = document.querySelector('footer span'),
+      footer = document.querySelectorAll('footer')[1];
+
 
     hr.onclick = function() {
+      addShowClass(footer);
+      console.log(footer);
       addShowClass(chat);
-      addShowClass(bottom1);
-      addShowClass(bottom2);
       setTimeout(function() {
         chat.innerHTML =
           "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <br> <b>В каком формате хотите скачать резюме?</b>"
+        userTextChat.innerHTML = "Я хочу скачать резюме в формате..."
+
         bottom1.innerHTML = "PDF";
         bottom2.innerHTML = "DOC";
-        removeShowClass(bottom1);
-        removeShowClass(bottom2);
+        removeShowClass(footer);
         removeShowClass(chat);
       }, 2000);
     }
-    customer.onclick = function () {
+    customer.onclick = function() {
       addShowClass(chat);
-      addShowClass(bottom1);
-      addShowClass(bottom2);
+      addShowClass(footer);
       setTimeout(function() {
-        chat.innerHTML = "Я делал много разных проектов <br> <b>Какого типа работы вас интересуют?</b>";
-        hide(bottom1);
-        hide(bottom2);
+        hide(bottom1)
+        hide(bottom2)
 
-        let newBtns = ["Калькуляторы","Анимация","Тестовые задания", "Покажи все работы"];
+        chat.innerHTML = "Я делал много разных проектов <br> <b>Какого типа работы вас интересуют?</b>";
+        hide(btns);
+        let newBtns = ["Калькуляторы", "Анимация", "Тестовые задания", "Покажи все работы"];
         for (var i = 0; i < newBtns.length; i++) {
           let btns = document.querySelector('.btns'),
-              newBtn = document.createElement('button');
+            newBtn = document.createElement('button');
           newBtn.innerHTML = newBtns[i];
           newBtn.classList.add("btn");
 
@@ -241,22 +247,19 @@
               newBtn.classList.add("animation");
               break;
             case 2:
-            newBtn.classList.add("testCase");
+              newBtn.classList.add("testCase");
               break;
             case 3:
-            newBtn.classList.add("allWorks");
+              newBtn.classList.add("allWorks");
           }
 
           btns.appendChild(newBtn);
         }
 
-
-
-
-
-        removeShowClass(bottom1);
-        removeShowClass(bottom2);
+        removeShowClass(footer);
         removeShowClass(chat);
+        userTextChat.innerHTML = "Покажи мне работы из раздела..."
+        show(btns)
       }, 2000);
     }
 
@@ -267,10 +270,12 @@
     function removeShowClass(e) {
       e.classList.remove('off');
     }
-    function hide(e){
+
+    function hide(e) {
       e.classList.add('hide');
     }
-    function show(e){
+
+    function show(e) {
       e.classList.remove('hide');
     }
 
