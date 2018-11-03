@@ -1,49 +1,43 @@
 * {
   margin: 0;
   padding: 0;
+  outline: #000;
+  box-sizing: border-box;
 }
 
 @font-face {
   font-family: 'Futura PT';
-  /* название одно */
   src: url('../fonts/200.woff');
-  /* разные файлы */
   font-weight: 200;
-  /* разная плотность */
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Futura PT';
-  /* название одно */
   src: url('../fonts/500.woff');
-  /* разные файлы */
   font-weight: 500;
-  /* разная плотность */
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Futura PT';
-  /* название одно */
   src: url('../fonts/700.woff');
-  /* разные файлы */
   font-weight: 700;
-  /* разная плотность */
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Futura PT';
-  /* название одно */
   src: url('../fonts/bold.woff');
-  /* разные файлы */
   font-weight: 900;
-  /* разная плотность */
   font-style: bold;
 }
 
 /* start */
+body {
+  overflow-x: hidden;
+}
+
 .big {
   font-size: 46px;
   line-height: 52px;
@@ -84,39 +78,85 @@ p, span {
   cursor: pointer;
 }
 
+.chatText {
+  background-color: #FFB6;
+  margin-bottom: 30px;
+}
+
+footer span, main span {
+  font-size: 1.5em;
+  transform: translateY(43%);
+}
+
+footer button {
+  float: left;
+  margin-top: 15px;
+}
+
 .lang {
   justify-content: space-around;
   display: flex;
 }
 
+.btns {
+  display: flex;
+  width: 400px;
+  flex-wrap: wrap;
+  padding-left: 15px;
+}
+
 /* all */
 .avatar {
   width: 10%;
-  margin-bottom: -25px;
-  z-index: -1;
+  z-index: 99;
   position: relative;
 }
 
 .chat {
-  width: 50%;
-  height: 30vh;
-  background-color: #e6e6e6;
-  margin-bottom: 15px;
-  text-align: center;
+  width: 80%;
+  margin: 15vh auto -15px;
   padding: 15px;
+}
+
+.chat img {
+  float: left;
+}
+
+footer.chat, .navBtn {
+  width: 70%;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  background-color: #dffd;
+  padding: 15px;
+  margin: 0;
+  float: right;
+}
+
+footer, .navBtn {
+  animation: 1s moveToLeft forwards;
+}
+
+header {
+  animation: 1s moveToRhite forwards;
 }
 
 .chatText {
   flex-direction: column;
-  font-size:1em;
+  font-size: 1.5em;
   line-height: 1.45;
+  padding: 5%;
+  padding-right: 15px;
   font-weight: 300;
   color: #000;
+  padding-top: 30vh;
+  padding-bottom: 15px;
+  margin-top: -30vh;
 }
 
 .btn {
   color: #000000;
-  border: 1px solid #000000;
+  border: none;
+  border-bottom: 1px solid #000000;
   font-family: 'Futura PT', Arial, sans-serif;
   text-align: center;
   height: 50px;
@@ -130,14 +170,99 @@ p, span {
   margin-right: 15px;
 }
 
+.chatText span {
+  float: left;
+  margin-right: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  font-weight: 400;
+  width: 100%;
+  letter-spacing: 2.5px;
+}
+
+.chatText a {
+  text-align: center;
+  display: block;
+  font-size: 13px;
+  color: #000;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+.chatText p {
+  font-size: 20px;
+  line-height: 1.55;
+}
+.picWork{
+  width: 50%;
+}
+.picWork img {
+  width: 90%;
+  padding: 5%;
+  margin-left: 5%;
+  margin-bottom: 5%;
+  display: flex;
+  background-color: #fff;
+}
+
+.work-deck {
+  display: flex;
+}
+
+.left-side {
+  flex-direction: column;
+  width: 50%;
+}
+
+.navBtn {
+  margin-bottom: 15px;
+  display: flex;
+}
+
+main {
+  display: none;
+}
+.R{
+  animation: moveToRhite .800s forwards;
+}
+.L{
+  animation: moveToLeft .800s forwards;
+}
 /*  animation */
 .off {
   animation: off 2s forwards;
+}
+
+.activLink {
+  animation: link .5s forwards;
 }
 
 @keyframes off {
   100% {
     opacity: 0;
     display: none;
+  }
+}
+
+@keyframes moveToLeft {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+}
+
+@keyframes moveToRhite {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+}
+
+@keyframes link {
+  to {
+    color: #FF7D73;
+    border: 1px solid #FF7D73;
   }
 }
